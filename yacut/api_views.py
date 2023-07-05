@@ -3,7 +3,8 @@ from http import HTTPStatus
 from flask import request, jsonify
 import validators
 
-from yacut import db, app, views
+from yacut import db, app
+from yacut.utils import get_short_id
 from yacut.error_handlers import InvalidAPI
 from yacut.models import URLMap
 
@@ -19,7 +20,7 @@ def add_urlmap():
             '"url" является обязательным полем!', HTTPStatus.BAD_REQUEST
         )
     if 'custom_id' not in data or not data['custom_id']:
-        data['custom_id'] = views.get_short_id()
+        data['custom_id'] = get_short_id()
     if not validators.url(data['url']):
         raise InvalidAPI('Некорректный URL', HTTPStatus.BAD_REQUEST)
     if not match(r'^[A-Za-z0-9]{1,16}$', data['custom_id']):

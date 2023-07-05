@@ -8,13 +8,6 @@ from yacut.forms import URLMapForm
 from yacut.utils import get_short_id
 
 
-def get_short_id():
-    short = ''.join(random.choices(string.ascii_lowercase, k=6))
-    if URLMap.query.filter_by(short=short).first():
-        get_short_id()
-    return short
-
-
 @app.route('/<string:short>', methods=['GET'])
 def short_link_redirect(short):
     return redirect(
