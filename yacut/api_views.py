@@ -2,7 +2,8 @@ from re import match
 from http import HTTPStatus
 from flask import request, jsonify
 import validators
-from . import db, app, views
+
+from yacut import db, app, views
 from yacut.error_handlers import InvalidAPI
 from yacut.models import URLMap
 

@@ -1,6 +1,7 @@
 import string
 import random
 from flask import render_template, redirect, flash, url_for
+
 from yacut import db, app
 from yacut.models import URLMap
 from yacut.forms import URLMapForm
