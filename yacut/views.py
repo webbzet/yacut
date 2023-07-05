@@ -1,5 +1,3 @@
-import string
-import random
 from flask import render_template, redirect, flash, url_for
 
 from yacut import db, app
